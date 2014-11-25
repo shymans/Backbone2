@@ -16,6 +16,10 @@
       User = Backbone.Model.extend({
         initialize: function(){
           console.log('User model has been initialized');
+
+          this.on('change:email', function(){
+            alert('User email has been updated');
+          });
         },
         defaults: {
           username: "johndoe",
@@ -23,13 +27,27 @@
         },
         getUserEmail: function(){
           console.log(this.get('email'));
+        },
+        getUsername: function(){
+          console.log(this.get('username'));
+        },
+        changeUserEmail: function(newEmail){
+          this.set({email: newEmail});
+        },
+        changeUsername: function(newUsername){
+          this.set({username: newUsername});
         }
       });
 
       //var user = new User();
 
       brad = new User({username: "Brad", email: "brad@gmail.com"});
-      brad.getUserEmail();
+
+      //brad.changeUserEmail('btraversy@yahoo.com');
+      brad.changeUsername('bradT')
+
+      //brad.getUserEmail();
+      brad.getUsername();
     </script>
   </body>
 </html>
