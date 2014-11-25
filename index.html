@@ -13,8 +13,23 @@
     
 
     <script>
+      User = Backbone.Model.extend({
+        initialize: function(){
+          console.log('User model has been initialized');
+        },
+        defaults: {
+          username: "johndoe",
+          email: "johndoe@gmail.com"
+        },
+        getUserEmail: function(){
+          console.log(this.get('email'));
+        }
+      });
 
-    
+      //var user = new User();
+
+      brad = new User({username: "Brad", email: "brad@gmail.com"});
+      brad.getUserEmail();
     </script>
   </body>
 </html>
